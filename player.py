@@ -8,18 +8,18 @@ class Player:
             "sur1":     0,
             "sur2":     35,
             "points":   1,
-#            "fab1":     True,
-#            "fab2":     False
+            "fab1":     0,
+            "fab2":     2
         }
         self.toBuy = {
             "sur1":     2,
             "sur2":     0,
-#            "fab1":     False,
-#            "fab2":     True
+            "fab1":     1,
+            "fab2":     0
         }
         self.toSell = {
             "sur1":     0,
-            "sur2":     10,
+            "sur2":     10
         }
 
     def buy(self):

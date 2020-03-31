@@ -1,5 +1,8 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
+from io import BytesIO
+import data
+import decode
 #import ssl
 
 hostName = '25.48.3.101'
@@ -18,12 +21,16 @@ class Kramakar(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         body = self.rfile.read(content_length)
         self.send_response(200)
+        self.end_headers()
+        response = BytesIO()
+        response.write(b'This is a POST request. ')
+        response.write(b'Received: ')
+        response.write(body)
+        self.wfile.write(response.getvalue())
         
 if __name__ == "__main__":
     httpd = HTTPServer((hostName, serverPort), Kramakar)
-    print("Server started https://%s:%s" % (hostName, serverPort))
- #   httpd.socket = ssl.wrap_socket(httpd.socket, keyfile='ssl/key.pem', certfile='ssl/cert.pem',
- #       server_side=True)
+    print("Server started http://%s:%s" % (hostName, serverPort))
     try:
          httpd.serve_forever()
     except KeyboardInterrupt:
