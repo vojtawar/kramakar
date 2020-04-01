@@ -1,2 +1,3 @@
-def get(x):
-    return 4
+import data
+
+# functions to change the prices

@@ -1,4 +1,3 @@
-import prices
 class Player:
     def __init__(self, name, num):
         self.name = name
